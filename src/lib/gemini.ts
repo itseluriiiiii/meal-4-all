@@ -1,7 +1,9 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { MealPlan } from "@/components/MealPlanResults";
 
-const genAI = new GoogleGenerativeAI("AIzaSyCGy1yygu0FKYQVSBN4CXVWk6wpqh3N3KU");
+export const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+
+const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 
 export interface MealPlanRequest {
   ingredients: string[];
