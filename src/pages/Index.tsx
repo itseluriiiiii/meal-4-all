@@ -6,6 +6,7 @@ import MealPlannerForm, { MealPlanFormData } from "@/components/MealPlannerForm"
 import MealPlanResults, { MealPlan } from "@/components/MealPlanResults";
 import Footer from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
+import { generateMealPlan } from "@/lib/gemini";
 
 // Mock meal plan for demo (will be replaced with AI-generated content)
 const mockMealPlan: MealPlan = {
@@ -63,21 +64,34 @@ const Index = () => {
   const handleFormSubmit = async (data: MealPlanFormData) => {
     setIsLoading(true);
     
-    // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    // For now, use mock data (will integrate AI later)
-    setMealPlan(mockMealPlan);
-    setShowMealPlan(true);
-    setIsLoading(false);
-    
-    toast({
-      title: "Meal Plan Created! 🎉",
-      description: "We've crafted a nutritious plan based on your ingredients.",
-    });
+    try {
+      // Call Gemini API to generate meal plan
+      const mealPlan = await generateMealPlan({
+        ingredients: data.ingredients,
+        familySize: data.familySize,
+        region: data.region,
+      });
+      
+      setMealPlan(mealPlan);
+      setShowMealPlan(true);
+      
+      toast({
+        title: "Meal Plan Created! 🎉",
+        description: "We've crafted a nutritious plan based on your ingredients.",
+      });
 
-    // Scroll to results
-    window.scrollTo({ top: 0, behavior: "smooth" });
+      // Scroll to results
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch (error) {
+      console.error("Error generating meal plan:", error);
+      toast({
+        title: "Error",
+        description: error instanceof Error ? error.message : "Failed to generate meal plan. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleReset = () => {
@@ -89,7 +103,7 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>ME4A - Meal For All | Nutritious, Affordable Meal Planning</title>
+        <title>ME4ALL - Meal For All | Nutritious, Affordable Meal Planning</title>
         <meta name="description" content="Create nutritious, budget-friendly meals with what you have. AI-powered meal planning that reduces food waste and maximizes nutrition for everyone." />
         <meta name="keywords" content="meal planning, nutrition, affordable meals, food waste, zero hunger, SDG 2" />
       </Helmet>

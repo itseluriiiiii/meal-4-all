@@ -3,12 +3,12 @@ import heroImage from "@/assets/hero-salad.jpg";
 
 const HeroImage = () => {
   return (
-    <div className="relative w-full max-w-md mx-auto">
+    <div className="relative w-full max-w-md mx-auto px-4 sm:px-0">
       {/* Decorative background circle */}
       <div className="absolute -inset-4 bg-secondary/40 rounded-[3rem] rotate-3" />
       
       {/* Main image container */}
-      <div className="relative rounded-[2.5rem] overflow-hidden shadow-card">
+      <div className="relative rounded-2xl sm:rounded-[2.5rem] overflow-hidden shadow-card">
         <img
           src={heroImage}
           alt="Fresh healthy salad bowl with colorful vegetables"
@@ -16,8 +16,8 @@ const HeroImage = () => {
         />
         
         {/* Floating badges */}
-        <div className="badge-float top-4 left-4 bg-card/90 text-foreground flex items-center gap-2">
-          <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
+        <div className="badge-float top-2 sm:top-4 left-2 sm:left-4 bg-card/90 text-foreground flex items-center gap-2 text-xs sm:text-sm">
+          <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
             <Heart className="w-3 h-3 text-primary" />
           </div>
           <div className="text-left">
@@ -26,8 +26,8 @@ const HeroImage = () => {
           </div>
         </div>
         
-        <div className="badge-float bottom-6 right-4 bg-card/90 text-foreground flex items-center gap-2 animation-delay-200">
-          <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
+        <div className="badge-float bottom-4 sm:bottom-6 right-2 sm:right-4 bg-card/90 text-foreground flex items-center gap-2 text-xs sm:text-sm animation-delay-200">
+          <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
             <Leaf className="w-3 h-3 text-primary" />
           </div>
           <div className="text-left">
@@ -37,14 +37,14 @@ const HeroImage = () => {
         </div>
       </div>
       
-      {/* Floating food icons */}
-      <div className="absolute -top-2 -right-2 w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center food-float animation-delay-100">
+      {/* Floating food icons - hidden on very small screens */}
+      <div className="hidden sm:flex absolute -top-2 -right-2 w-10 h-10 bg-accent/20 rounded-full items-center justify-center food-float animation-delay-100">
         <span className="text-lg">🥑</span>
       </div>
-      <div className="absolute top-1/4 -left-4 w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center food-float animation-delay-300">
+      <div className="hidden sm:flex absolute top-1/4 -left-4 w-8 h-8 bg-primary/20 rounded-full items-center justify-center food-float animation-delay-300">
         <span className="text-sm">🍅</span>
       </div>
-      <div className="absolute bottom-1/4 -right-3 w-8 h-8 bg-secondary rounded-full flex items-center justify-center food-float animation-delay-500">
+      <div className="hidden sm:flex absolute bottom-1/4 -right-3 w-8 h-8 bg-secondary rounded-full items-center justify-center food-float animation-delay-500">
         <span className="text-sm">🥬</span>
       </div>
     </div>

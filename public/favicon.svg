@@ -1,0 +1,19 @@
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Circular background -->
+  <circle cx="96" cy="96" r="96" fill="#8FBF3F"/>
+  
+  <!-- Inner circle for contrast -->
+  <circle cx="96" cy="96" r="88" fill="#FFFFFF"/>
+  
+  <!-- Plate/bowl shape -->
+  <circle cx="96" cy="96" r="70" fill="#8FBF3F" opacity="0.1"/>
+  
+  <!-- Fork and spoon icon -->
+  <g transform="translate(96, 96)">
+    <!-- Fork -->
+    <path d="M -20 -30 L -20 30 M -25 -30 L -15 -30 M -28 -25 L -12 -25" stroke="#8FBF3F" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Spoon -->
+    <path d="M 20 -30 Q 25 -20 25 0 Q 25 15 20 25 L 20 30 M 15 -30 L 25 -30" stroke="#8FBF3F" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
